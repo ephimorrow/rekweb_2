@@ -4,9 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SeminarController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Models\Seminar;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -28,21 +28,21 @@ Route::get('/seminars/{seminar}', function (Seminar $seminar) {
 Route::post('/seminars/{seminar}/register', [RegistrationController::class, 'store'])
     ->name('seminars.register');
 
-// Custom Authentication Routes (tanpa laravel/ui)
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+// Authentication Routes (Custom)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Admin Routes
+// Admin Routes (Protected by auth middleware)
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('seminars', SeminarController::class)->names('admin.seminars');
 });
 
-// Redirect after login
+// Redirect after login based on user role
 Route::get('/home', function () {
     if (auth()->check() && auth()->user()->is_admin) {
         return redirect()->route('admin.dashboard');
     }
     return redirect()->route('home');
-});
+})->name('home.redirect');

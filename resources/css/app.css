@@ -1,0 +1,211 @@
+/* Pink Theme Variables */
+:root {
+    --pink-primary: #ff69b4;
+    --pink-light: #ffb6c1;
+    --pink-lighter: #ffe4e9;
+    --pink-dark: #db4d8e;
+    --text-dark: #2d3748;
+    --text-muted: #718096;
+    --bg-light: #fff6f8;
+}
+
+/* General Styles */
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Pink Theme Classes */
+.text-pink {
+    color: var(--pink-primary) !important;
+}
+
+.bg-pink {
+    background-color: var(--pink-primary) !important;
+}
+
+.bg-pink-light {
+    background-color: var(--bg-light) !important;
+}
+
+.btn-pink {
+    background-color: var(--pink-primary);
+    border-color: var(--pink-primary);
+    color: white;
+}
+
+.btn-pink:hover {
+    background-color: var(--pink-dark);
+    border-color: var(--pink-dark);
+    color: white;
+}
+
+.btn-outline-pink {
+    color: var(--pink-primary);
+    border-color: var(--pink-primary);
+}
+
+.btn-outline-pink:hover {
+    background-color: var(--pink-primary);
+    border-color: var(--pink-primary);
+    color: white;
+}
+
+/* Card Styles */
+.seminar-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+    border-radius: 12px;
+}
+
+.seminar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15) !important;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Navbar Styles */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--pink-primary) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--pink-lighter) 0%, #ffffff 100%);
+}
+
+/* Badge Styles */
+.badge.bg-pink {
+    background-color: var(--pink-primary) !important;
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--pink-light);
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+}
+
+/* Table Styles */
+.table-hover tbody tr:hover {
+    background-color: var(--pink-lighter);
+}
+
+/* Alert Styles */
+.alert-success {
+    border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+    border-left: 4px solid #dc3545;
+}
+
+.alert-info {
+    border-left: 4px solid #17a2b8;
+}
+
+/* Feature Icons */
+.feature-icon {
+    padding: 2rem 1rem;
+}
+
+.feature-icon:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-box {
+    padding: 1.5rem 1rem;
+}
+
+.feature-box:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-img-top {
+        height: 150px !important;
+    }
+}
+
+/* Loading States */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Custom Utilities */
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Sticky Elements */
+.sticky-top {
+    position: sticky;
+    z-index: 1020;
+}
+
+/* Pagination Styles */
+.pagination .page-link {
+    color: var(--pink-primary);
+    border: 1px solid #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--pink-primary);
+    border-color: var(--pink-primary);
+}
+
+.pagination .page-link:hover {
+    color: var(--pink-dark);
+    background-color: var(--pink-lighter);
+    border-color: #dee2e6;
+}
+
+/* Section Titles */
+.section-title {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--pink-primary);
+}
+
+/* Min height for full viewport */
+.min-vh-100 {
+    min-height: 100vh;
+}
