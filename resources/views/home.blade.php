@@ -3,21 +3,27 @@
 @section('title', 'Home - Seminar Management')
 
 @section('content')
+<!-- Hero Section -->
 <div class="hero-section bg-pink-light py-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h1 class="display-4 fw-bold text-dark mb-4">Temukan Seminar Terbaik untuk Pengembangan Diri</h1>
+                <h1 class="display-4 fw-bold text-gradient mb-4">Temukan Seminar Terbaik untuk Pengembangan Diri</h1>
                 <p class="lead mb-4">Jelajahi berbagai seminar, workshop, dan presentasi akademik yang akan memperkaya pengetahuan dan keterampilan Anda.</p>
-                <a href="{{ route('seminars.index') }}" class="btn btn-pink btn-lg">Lihat Seminar</a>
+                <a href="{{ route('seminars.index') }}" class="btn btn-pink btn-lg">
+                    <i class="fas fa-search me-2"></i>Jelajahi Seminar
+                </a>
             </div>
             <div class="col-lg-6">
-                <img src="https://via.placeholder.com/500x300/ffb6c1/ffffff?text=Seminar+Event" alt="Seminar" class="img-fluid rounded shadow">
+                <div class="text-center">
+                    <i class="fas fa-graduation-cap fa-8x text-gradient"></i>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Featured Seminars -->
 <div class="container py-5">
     <div class="row mb-5">
         <div class="col-12 text-center">
@@ -36,13 +42,7 @@
                     <p class="card-text text-muted small">{{ Str::limit($seminar->description, 100) }}</p>
                     <div class="seminar-info">
                         <p class="mb-1"><i class="fas fa-map-marker-alt text-pink me-2"></i>{{ $seminar->location ?? 'Online' }}</p>
-                        <p class="mb-0"><i class="fas fa-calendar text-pink me-2"></i>
-                            @if($seminar->datetime instanceof \Carbon\Carbon)
-                                {{ $seminar->datetime->format('d M Y, H:i') }}
-                            @else
-                                {{ \Carbon\Carbon::parse($seminar->datetime)->format('d M Y, H:i') }}
-                            @endif
-                        </p>
+                        <p class="mb-0"><i class="fas fa-calendar text-pink me-2"></i>{{ $seminar->formatted_datetime }}</p>
                     </div>
                 </div>
                 <div class="card-footer bg-transparent">
@@ -69,6 +69,7 @@
     @endif
 </div>
 
+<!-- Features Section -->
 <section class="bg-light py-5">
     <div class="container">
         <div class="row">

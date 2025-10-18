@@ -4,6 +4,11 @@
 
 @section('content')
 <div class="container py-5">
+    <!-- Back Button -->
+    <div class="section-back">
+        <x-back-button url="{{ route('home') }}" text="Kembali ke Home" />
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">

@@ -20,21 +20,38 @@ class Seminar extends Model
     ];
 
     protected $casts = [
-        'datetime' => 'datetime', // This ensures datetime is cast to Carbon instance
+        'datetime' => 'datetime',
     ];
 
+    // Relationship with registrations
     public function registrations()
     {
         return $this->hasMany(Registration::class);
     }
 
+    // Relationship with participants through registrations
     public function participants()
     {
-        return $this->hasManyThrough(Participant::class, Registration::class);
+        return $this->belongsToMany(Participant::class, 'registrations')
+                    ->withPivot('status')
+                    ->withTimestamps();
     }
 
+    // Accessor for photo URL
     public function getPhotoUrlAttribute()
     {
         return $this->photo ? Storage::url($this->photo) : null;
+    }
+
+    // Accessor for formatted datetime
+    public function getFormattedDatetimeAttribute()
+    {
+        return $this->datetime->format('d M Y, H:i');
+    }
+
+    // Accessor for participants count
+    public function getParticipantsCountAttribute()
+    {
+        return $this->registrations()->count();
     }
 }
