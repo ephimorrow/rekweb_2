@@ -15,6 +15,18 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto px-md-4 py-4">
+                <!-- Tombol Back yang bisa di-override di section -->
+                @hasSection('back-button')
+                    @yield('back-button')
+                @else
+                    <div class="mb-4">
+                        <a href="javascript:history.back()" class="btn-back">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Kembali
+                        </a>
+                    </div>
+                @endif
+                
                 <div class="fade-in">
                     @yield('content')
                 </div>

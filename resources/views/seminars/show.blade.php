@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item"><a href="{{ route('seminars.index') }}">Seminar</a></li>
                     <li class="breadcrumb-item active">{{ Str::limit($seminar->title, 50) }}</li>
                 </ol>
-            </nav>
+            </nav>P
 
             <div class="card shadow-sm mb-4">
                 @if($seminar->photo)

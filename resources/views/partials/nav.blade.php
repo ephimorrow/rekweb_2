@@ -4,31 +4,36 @@
             <i class="fas fa-graduation-cap me-2 text-gradient"></i>SeminarKu
         </a>
         
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler border-0" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <i class="fas fa-bars text-pink"></i>
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
+                    <a class="nav-link {{ request()->routeIs('home') ? 
+                    'active' : '' }}" href="{{ route('home') }}">
                         <i class="fas fa-home me-1"></i>Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('seminars.*') ? 'active' : '' }}" href="{{ route('seminars.index') }}">
+                    <a class="nav-link {{ request()->routeIs('seminars.*') 
+                    ? 'active' : '' }}" href="{{ route('seminars.index') }}">
                         <i class="fas fa-calendar-alt me-1"></i>Seminar
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">
+                    <a class="nav-link {{ request()->routeIs('about') ? 
+                    'active' : '' }}" href="{{ route('about') }}">
                         <i class="fas fa-info-circle me-1"></i>Tentang
                     </a>
                 </li>
                 @auth
                     @if(auth()->user()->is_admin)
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+                        <a class="nav-link {{ request()->routeIs('admin.*') ? 
+                        'active' : '' }}" href="{{ route('admin.dashboard') }}">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
                         </a>
                     </li>

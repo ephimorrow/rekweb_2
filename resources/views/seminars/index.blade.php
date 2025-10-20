@@ -4,6 +4,30 @@
 
 @section('content')
 <div class="container py-5">
+    <!-- Tombol Back dengan Multiple Options -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{{ url('/') }}" class="btn-back">
+                    <i class="fas fa-home me-2"></i>
+                    Beranda
+                </a>
+                <a href="javascript:history.back()" class="btn-back btn-back-outline">
+                    <i class="fas fa-arrow-left me-2"></i>
+                    Kembali
+                </a>
+                @auth
+                    @if(auth()->user()->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="btn-back btn-back-primary">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard Admin
+                        </a>
+                    @endif
+                @endauth
+            </div>
+        </div>
+    </div>
+
     <div class="row mb-4">
         <div class="col-12 text-center">
             <h1 class="display-5 fw-bold text-dark mb-3">Daftar Seminar</h1>
